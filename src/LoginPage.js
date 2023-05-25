@@ -11,6 +11,7 @@ const LoginPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Add this: https://stackoverflow.com/questions/69133384/react-post-method-not-working-with-fetch-method
     // Handle login logic here
     console.log(`Email: ${email}, Password: ${password}`);
     navigate('/home');
@@ -24,7 +25,7 @@ const LoginPage = () => {
     <>
       <h1 className="headline">BookingBookz</h1>
       <div className="login-container">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form action="/LoginPage" method="POST" className="login-form">
           <input
             type="email"
             className="login-input"
@@ -50,7 +51,7 @@ const LoginPage = () => {
               {showPassword ? 'Hide' : 'Show'}
             </button>
           </div>
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button" onSubmit={handleSubmit}>
             Login
           </button>
           <div className="signup-forgot-container">

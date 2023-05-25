@@ -22,9 +22,10 @@ const SignupPage = () => {
     <>
       <h1 className="headline">BookingBookz</h1>
       <div className="login-container">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form action="/SignupPage" className="login-form" method="POST">
           <input
             type="text"
+            name="name"
             className="login-input"
             placeholder="Name"
             value={name}

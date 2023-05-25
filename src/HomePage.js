@@ -32,6 +32,7 @@ const HomePage = () => {
             <div className="bottom-bar">
                 <select name="options" id="options"></select>
                 <input type="text" placeholder="Search..." />
+                <button type="submit" placeholder="Log ud" />
             </div>
         </div>
     )
