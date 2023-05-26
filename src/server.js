@@ -40,7 +40,6 @@ app.post('/SignupPage', async (req, res) => {
     }
 })
 
-
 app.get('/LoginPage', (req, res) => {
     // Handle GET requests to /LoginPage here
     res.send('Login page');
