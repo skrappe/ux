@@ -1,19 +1,17 @@
-import express from "express";
-import cors from "cors";
-import fileUpload from "express-fileupload";
-import async from "async";
-
+const express = require('express');
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
+const async = require('async');
 const bcrypt = require('bcrypt');
-const app = express();
-const PORT = 3000;
 
-app.use(cors);
+const app = express();
+const PORT = 3001;
+
+app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
 app.use(express.urlencoded({ extended: false }))
-app.use()
-
 
 // vJERES KODE HERv
 
@@ -33,7 +31,7 @@ app.post('/SignupPage', async (req, res) => {
             email: req.body.email,
             password: hashedPassword
         })
-        console.log("Number of users" + users.length)
+        console.log("Number of users: " + users.length)
         console.log(hashedPassword);
         console.log(req.body.email);
         res.redirect('/LoginPage')
@@ -42,8 +40,13 @@ app.post('/SignupPage', async (req, res) => {
     }
 })
 
+app.get('/LoginPage', (req, res) => {
+    // Handle GET requests to /LoginPage here
+    res.send('Login page');
+});
+
 app.post('/LoginPage', async (req, res) => {
-    const user = users.find(user => user.name === req.body.name)
+    const user = users.find(user => user.email === req.body.email)
     if (user == null) {
         console.log("couldn't find user")
         return res.status(400).send('Cannot find user')
@@ -60,13 +63,6 @@ app.post('/LoginPage', async (req, res) => {
         res.status(500).send()
     }
 })
-
-function checkIfAuth(req, res, next) {
-    if(req.isAuthenticated()) {
-        return res.redirect('/');
-    }
-    next();
-}
 
 // ^JERES KODE HER^
 
