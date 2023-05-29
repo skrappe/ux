@@ -22,7 +22,7 @@ app.get('/users', async(req,res)=>{
 })
 
 app.post('/SignupPage', async (req, res) => {
-    console.log("Receiving user data...");
+    console.log("Receiving user data....");
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         users.push({
